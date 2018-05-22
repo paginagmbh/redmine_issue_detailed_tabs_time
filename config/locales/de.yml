@@ -1,5 +1,6 @@
 de:
   label_history_tab_all: Alles
+  label_history_tab_none: Nichts
   label_history_tab_activity: Aktivitäten
   label_history_tab_comments: Kommentare
   label_history_tab_private: Privates
@@ -8,7 +9,7 @@ de:
   label_history_time_logged_by: Erfasst von %{author} vor %{age}
   label_history_tab_time: Zeiterfassung
   label_tabtime_questions: Fragen
-  
-  permission_view_all: Alle anzeigen
-  permission_view_comments: Kommentare anzeigen
-  permission_view_activity: Aktivitäten anzeigen
+
+  permission_view_all: "History Tabs: Alle anzeigen"
+  permission_view_comments: "History Tabs: Kommentare anzeigen"
+  permission_view_activity: "History Tabs: Aktivitäten anzeigen"

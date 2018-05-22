@@ -10,6 +10,6 @@ en:
   label_history_tab_time: Time Log
   label_tabtime_questions: Questions
 
-  permission_view_all: View all
-  permission_view_comments: View comments
-  permission_view_activity: View activity
+  permission_view_all: "History Tabs: View all"
+  permission_view_comments: "History Tabs: View comments"
+  permission_view_activity: "History Tabs: View activity"
