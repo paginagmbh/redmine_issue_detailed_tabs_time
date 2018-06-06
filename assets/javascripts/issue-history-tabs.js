@@ -3,7 +3,10 @@ Author: Daniel Munn <https://github.com/danmunn
 Date: 23/05/2012
 Forked & Redone: Mark Kalender (Markedagain)
 Date: 08/03/2013
+Forked & Changed: Tobias Fischer (tofi86)
+Date: 06/06/2018
 */
+
 // Simple cookie handling from http://stackoverflow.com/a/24103596/692410
 function createCookie(name,value) {
 	document.cookie = name + "=" + value + "; path=/";
@@ -65,12 +68,21 @@ function selectDefaultTab() {
 	var tab = readCookie('selected_issue_tab');
 	var focusOn = null;
 	if(window.location.hash != '') {
-		var elName = window.location.hash;
-		elName = elName.substring(1, elName.length);
-		var elem = $('a[name=' + elName + ']').parent().parent();
-		if(elem) {
-			tab = 'history_all';
+		var fragment = window.location.hash;
+
+		// look for <a name="">
+		var anchorElem = $('a[name=' + fragment.substring(1, fragment.length) + ']');
+		// alternatively look for <elem id="">
+		var elem = $(fragment);
+
+		if(anchorElem.length) {
+			focusOn = anchorElem.parent().parent();
+		} else if(elem.length) {
 			focusOn = elem;
+		}
+
+		if(focusOn) {
+			tab = 'history_all';
 		}
 	}
 	if(!tab) {
@@ -82,13 +94,11 @@ function selectDefaultTab() {
 	}
 	selectTab(tab);
 	if(focusOn) {
-		$('html, body').animate({
-			scrollTop: focusOn.offset().top
-		}, 500);
+		$(window).scrollTop( focusOn.offset().top - parseInt(focusOn.css("marginTop")) - $('#top-menu.is_stuck').height() );
 		focusOn.addClass('focus');
 	}
 }
 
-$(document).ready(function(){
+$(window).load(function() {
 	initTabs();
 });
